@@ -1,0 +1,62 @@
+server:
+    port: 9090
+    servlet:
+        session:
+            timeout: 30m
+            cookie:
+                http-only: false
+                same-site: none
+                secure: true
+    reactive:
+        session:
+            timeout: 30m
+
+default_login:
+    user: admin
+    password: 123456
+
+spring:
+    application:
+        name: login
+    datasource:
+        driver-class-name: org.sqlite.JDBC
+        url: jdbc:sqlite:E:/Temp/bs.sqlite
+        username:
+        password:
+    session:
+        redis:
+            flush-mode: on_save
+            namespace: spring:session
+        story-type: redis
+    data:
+        redis:
+            host: 127.0.0.1
+            port: 6379
+#            password: dkj@zju
+    web:
+        resources:
+            static-locations: file:${web.upload-path},classpath:/META-INF/resources/,classpath:/resources/,classpath:/static/,classpath:/public/
+    servlet:
+        multipart:
+            max-file-size: 100MB
+    cloud:
+        nacos:
+            config:
+                import-check:
+                    enabled: false
+    mvc:
+        pathmatch:
+            matching-strategy: ant_path_matcher
+
+logging:
+    level:
+        cn.weirdsky.mapper.mapper: debug
+
+web:
+    upload-path: E:\_workspace\bs-api\src\main\resources\static
+python:
+
+    pythonPath: E:\_workspace\bs-api\src\main\resources\py\
+    python: D:\Anaconda3\envs\bs\python.exe
+
+
